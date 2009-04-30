@@ -29,8 +29,6 @@ Declare your stories as follows:
 
 If you are using Rails, you can use stories for your integration tests with Webrat:
 
-    require "stories"
-
     class UserStoriesTest < ActionController::IntegrationTest
       story "As a user I want to log in so that I can access restricted features" do
         setup do
