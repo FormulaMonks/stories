@@ -1,0 +1,18 @@
+Gem::Specification.new do |s|
+  s.name = 'stories'
+  s.version = '0.0.1'
+  s.summary = %{Write stories and user acceptance tests using Test::Unit.}
+  s.date = %q{2009-04-30}
+  s.authors = ["Damian Janowski", "Michel Martens"]
+  s.email = "michel@soveran.com"
+  s.homepage = "http://github.com/citrusbyte/stories"
+
+  s.specification_version = 2 if s.respond_to? :specification_version=
+
+  s.files = <%= FileList['lib/**/*.rb', 'README*', 'LICENSE', 'Rakefile', 'rails/**/*', 'test/**/*.*'].inspect %>
+
+  s.require_paths = ['lib']
+
+  s.has_rdoc = false
+end
+
