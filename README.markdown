@@ -1,7 +1,7 @@
 Stories
 =======
 
-Stories and User Acceptance Tests for Test::Unit.
+Stories and User Acceptance Tests for the minimalist test framework [Contest](http://github.com/citrusbyte/contest).
 
 Description
 -----------

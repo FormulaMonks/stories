@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = 'stories'
-  s.version = '0.0.2'
-  s.summary = %{Write stories and user acceptance tests using Test::Unit.}
+  s.version = '0.0.3'
+  s.summary = %{Write stories and user acceptance tests using the minimalist testing framework Contest.}
   s.date = %q{2009-04-30}
   s.authors = ["Damian Janowski", "Michel Martens"]
   s.email = "michel@soveran.com"
@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
 
   s.require_paths = ['lib']
 
+  s.add_dependency("citrusbyte-contest", ">= 0.0.8")
+
   s.has_rdoc = false
 end
-
