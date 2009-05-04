@@ -2,20 +2,30 @@ require "rubygems"
 require "contest"
 
 class Test::Unit::TestCase
+  @@stories = []
+
   class << self
     alias scenario test
 
     def story(name, &block)
-      $stories << name
+      @@stories << name
       context(name, &block)
+    end
+
+    def stories
+      @@stories
     end
   end
 end
 
-$stories = []
-
 at_exit do
-  unless $stories.empty?
-    puts $stories.join("\n"); puts
+  unless Test::Unit::TestCase.stories.empty?
+    puts
+
+    Test::Unit::TestCase.stories.each do |s|
+      puts "- #{s}"
+    end
+
+    puts
   end
 end
