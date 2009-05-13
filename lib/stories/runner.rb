@@ -122,8 +122,6 @@ module Stories::Webrat
   end
 end
 
-Test::Unit::TestCase.send(:include, Stories::Webrat)
-
 Test::Unit::AutoRunner::RUNNERS[:story] = proc do |r|
   StoryRunner
 end
