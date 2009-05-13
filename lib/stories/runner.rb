@@ -10,7 +10,7 @@ class Test::Unit::TestCase
 
       original_story(name) do
         @@story = story
-        yield
+        instance_eval(&block)
       end
 
       $stories << story
