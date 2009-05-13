@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'stories'
-  s.version = '0.0.4'
+  s.version = '0.0.5'
   s.summary = %{Write stories and user acceptance tests using the minimalist testing framework Contest.}
   s.date = %q{2009-04-30}
   s.authors = ["Damian Janowski", "Michel Martens"]
@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.specification_version = 2 if s.respond_to? :specification_version=
 
-  s.files = ["lib/stories.rb", "README.markdown", "LICENSE", "Rakefile", "rails/init.rb", "test/all_test.rb"]
+  s.files = ["lib/stories/runner/pdf.rb", "lib/stories/runner.rb", "lib/stories.rb", "README.markdown", "LICENSE", "Rakefile", "rails/init.rb", "test/all_test.rb", "test/pdf_test.rb"]
 
   s.require_paths = ['lib']
 
