@@ -23,7 +23,7 @@ class Test::Unit::TestCase
         @scenario = scenario
         instance_eval(&block)
       end
-      
+
       @@story.scenarios << scenario
     end
   end
@@ -52,7 +52,7 @@ class StoryRunner < Test::Unit::UI::Console::TestRunner
           scenario.steps.each do |step|
             puts "      #{step}"
           end
-          
+
           scenario.assertions.each do |assertion|
             puts "      #{assertion}"
           end
@@ -91,37 +91,43 @@ end
 module Stories; end
 
 module Stories::Webrat
-  def click_link(name)
-    @scenario.steps << "Click #{name.inspect}"
-    super
-  end
-  
-  def click_button(name)
-    @scenario.steps << "Click #{name.inspect}"
-    super
-  end
- 
-  def fill_in(name, opts = {})
-    @scenario.steps << "Fill in #{name.inspect} with #{opts[:with].inspect}"
-    super
+  def report(action, &block)
+    define_method(action) do |*args|
+      @scenario.steps << block.call(*args)
+      super
+    end
   end
 
-  def visit(page)
-    @scenario.steps << "Go to #{page.inspect}"
-    super
-  end
-
-  def assert_contain(text)
-    @scenario.steps << "I should see #{text.inspect}"
-    super
-  end
-
-  def assert_equal(expected, actual, message = nil)
-    @scenario.assertions << "#{actual.to_s.inspect} should be #{expected.to_s.inspect}."
-    super
-  end
+  module_function :report
 end
 
 Test::Unit::AutoRunner::RUNNERS[:story] = proc do |r|
   StoryRunner
+end
+
+# Common Webrat steps.
+module Stories::Webrat
+  report :click_link do |name|
+    "Click #{name.inspect}"
+  end
+  
+  report :click_button do |name|
+    "Click #{name.inspect}"
+  end
+
+  report :fill_in do |name, opts|
+    "Fill in #{name.inspect} with #{opts[:with].inspect}"
+  end
+
+  report :visit do |page|
+    "Go to #{page.inspect}"
+  end
+  
+  report :check do |name|
+    "Check #{name.inspect}"
+  end
+
+  report :assert_contain do |text|
+    "I should see #{text.inspect}"
+  end
 end
