@@ -53,9 +53,11 @@ module Stories
 
   class Runner < Test::Unit::UI::Console::TestRunner
     def test_finished(name)
+      print "."
     end
 
     def add_fault(fault)
+      print "F"
       @faults << fault
     end
 
