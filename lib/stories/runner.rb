@@ -92,14 +92,14 @@ module Stories
   end
 
   module Webrat
-    def report(action, &block)
+    def report_for(action, &block)
       define_method(action) do |*args|
         @scenario.steps << block.call(*args)
         super
       end
     end
 
-    module_function :report
+    module_function :report_for
   end
 end
 
@@ -118,31 +118,32 @@ end
 
 # Common Webrat steps.
 module Stories::Webrat
-  report :click_link do |name|
+  report_for :click_link do |name|
     "Click #{quote(name)}"
   end
   
-  report :click_button do |name|
+  report_for :click_button do |name|
     "Click #{quote(name)}"
   end
 
-  report :fill_in do |name, opts|
+  report_for :fill_in do |name, opts|
     "Fill in #{quote(name)} with #{quote(opts[:with])}"
   end
 
-  report :visit do |page|
+  report_for :visit do |page|
     "Go to #{quote(page)}"
   end
   
-  report :check do |name|
+  report_for :check do |name|
     "Check #{quote(name)}"
   end
 
-  report :assert_contain do |text|
+  report_for :assert_contain do |text|
     "I should see #{quote(text)}"
   end
 
   def quote(text)
     "“#{text}”"
   end
+  module_function :quote
 end
