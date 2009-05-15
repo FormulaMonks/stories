@@ -49,9 +49,7 @@ module Stories
 
     def render_many(pdf, elements)
       elements.each do |el|
-        pdf.text el.to_s.gsub(/"([^"]+)"/) {
-          "“#{$1}”"
-        }
+        pdf.text el.to_s
       end
     end
   end

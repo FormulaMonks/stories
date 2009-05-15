@@ -119,26 +119,30 @@ end
 # Common Webrat steps.
 module Stories::Webrat
   report :click_link do |name|
-    "Click #{name.inspect}"
+    "Click #{quote(name)}"
   end
   
   report :click_button do |name|
-    "Click #{name.inspect}"
+    "Click #{quote(name)}"
   end
 
   report :fill_in do |name, opts|
-    "Fill in #{name.inspect} with #{opts[:with].inspect}"
+    "Fill in #{quote(name)} with #{quote(opts[:with])}"
   end
 
   report :visit do |page|
-    "Go to #{page.inspect}"
+    "Go to #{quote(page)}"
   end
   
   report :check do |name|
-    "Check #{name.inspect}"
+    "Check #{quote(name)}"
   end
 
   report :assert_contain do |text|
-    "I should see #{text.inspect}"
+    "I should see #{quote(text)}"
+  end
+
+  def quote(text)
+    "“#{text}”"
   end
 end
