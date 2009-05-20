@@ -50,11 +50,24 @@ If you are using Rails, you can use stories for your integration tests with Webr
 
 You can run it normally, it's Test::Unit after all. If you want to run a particular test, say "yet more tests", try this:
 
-    $ testrb my_test.rb -n test_yet_more_tests
+    $ ruby my_test.rb -n test_yet_more_tests
 
 Or with a regular expression:
 
-    $ testrb my_test.rb -n /yet_more_tests/
+    $ ruby my_test.rb -n /yet_more_tests/
+
+Awesome output
+--------------
+
+You can get a nice output with your user stories with the `stories` runner:
+
+    $ ruby my_test.rb --runner=stories
+
+Now, if you want to impress everyone around you, try this:
+
+    $ ruby my_test.rb --runner=stories-pdf
+
+You will get a nicely formatted PDF with your user stories. It uses [Prawn](http://prawn.majesticseacreature.com/), so you will need to install it first.
 
 Installation
 ------------
