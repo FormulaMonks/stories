@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.specification_version = 2 if s.respond_to? :specification_version=
 
-  s.files = ["lib/stories/runner/pdf.rb", "lib/stories/runner.rb", "lib/stories.rb", "README.markdown", "LICENSE", "Rakefile", "rails/init.rb", "test/all_test.rb", "test/pdf_test.rb"]
+  s.files = ["lib/tasks/stories.rake", "lib/stories/runner/pdf.rb", "lib/stories/runner.rb", "lib/stories.rb", "README.markdown", "LICENSE", "Rakefile", "rails/init.rb", "test/all_test.rb", "test/pdf_test.rb"]
 
   s.require_paths = ['lib']
 
