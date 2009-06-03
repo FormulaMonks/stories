@@ -72,12 +72,11 @@ You will get a nicely formatted PDF with your user stories. It uses [Prawn](http
 Installation
 ------------
 
-    $ gem sources -a http://gems.github.com (you only have to do this once)
-    $ sudo gem install citrusbyte-stories
+    $ sudo gem install stories
 
 If you want to use it with Rails, add this to config/environment.rb:
 
-    config.gem "citrusbyte-stories", :lib => 'stories', :source => 'http://gems.github.com'
+    config.gem "stories"
 
 Then you can vendor the gem:
 
