@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
   s.name = 'stories'
-  s.version = '0.0.7'
+  s.version = '0.0.8'
   s.summary = %{Write stories and user acceptance tests using the minimalist testing framework Contest.}
   s.date = %q{2009-04-30}
   s.authors = ["Damian Janowski", "Michel Martens"]
-  s.email = "michel@soveran.com"
+  s.email = ["michel@soveran.com", "damian@dimaion.com"]
   s.homepage = "http://github.com/citrusbyte/stories"
 
   s.specification_version = 2 if s.respond_to? :specification_version=

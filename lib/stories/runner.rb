@@ -12,7 +12,7 @@ class Test::Unit::TestCase
 
       original_story(name) do
         @@story = story
-        instance_eval(&block)
+        class_eval(&block)
       end
 
       $stories << story

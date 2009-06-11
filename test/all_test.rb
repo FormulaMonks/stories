@@ -14,4 +14,14 @@ class UserStoryTest < Test::Unit::TestCase
       assert_equal "valid user", @user
     end
   end
+
+  story "As a user I want helpers so that I can extract" do
+    def some_helper
+      1
+    end
+
+    scenario "A call to a helper" do
+      assert_equal 1, some_helper
+    end
+  end
 end

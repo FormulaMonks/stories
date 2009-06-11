@@ -13,7 +13,7 @@ end
 Test::Unit::AutoRunner::RUNNERS[:console] = Proc.new {|r| Stories::Runner::PDF }
 
 class UserStoryTest < Test::Unit::TestCase
-  story "As a user I want to create stories so I can test if they pass" do
+  story "As a user I want to create stories with a custom PDF" do
     setup do
       @user = "valid user"
     end
