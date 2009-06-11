@@ -9,5 +9,7 @@ Gem::Specification.new do |s|
 
   s.files = ["lib/tasks/stories.rake", "lib/stories/runner/pdf.rb", "lib/stories/runner.rb", "lib/stories.rb", "README.markdown", "LICENSE", "Rakefile", "rails/init.rb", "test/all_test.rb", "test/pdf_test.rb"]
 
+  s.rubyforge_project = "stories"
+
   s.add_dependency("contest", "~> 0.1")
 end
