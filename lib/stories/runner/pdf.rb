@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 gem "prawn", "~> 0.4"
 require "prawn"
 

@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'test/unit/ui/console/testrunner'
 
 $stories = []
@@ -12,6 +14,9 @@ class Test::Unit::TestCase
 
       original_story(name) do
         @@story = story
+
+        def self.story; @@story; end
+
         class_eval(&block) if block_given?
       end
 
@@ -26,7 +31,7 @@ class Test::Unit::TestCase
         instance_eval(&block)
       end
 
-      @@story.scenarios << scenario
+      self.story.scenarios << scenario
     end
   end
 end
