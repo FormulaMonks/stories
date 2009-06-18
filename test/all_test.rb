@@ -24,4 +24,6 @@ class UserStoryTest < Test::Unit::TestCase
       assert_equal 1, some_helper
     end
   end
+
+  story "Pending story"
 end

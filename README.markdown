@@ -56,6 +56,17 @@ Or with a regular expression:
 
     $ ruby my_test.rb -n /yet_more_tests/
 
+Pending stories
+---------------
+
+Since Stories aims to improve your project's documentation, you can have pending stories:
+
+    class UserStoryTest < Test::Unit::TestCase
+      story "As a user I want to create stories so I can test if they pass"
+    end
+
+This is useful if you want to write all your stories upfront, even before you write the acceptance tests.
+
 Awesome output
 --------------
 
@@ -68,6 +79,11 @@ Now, if you want to impress everyone around you, try this:
     $ ruby my_test.rb --runner=stories-pdf
 
 You will get a nicely formatted PDF with your user stories. It uses [Prawn](http://prawn.majesticseacreature.com/), so you will need to install it first.
+
+If you're using Rails, you can run the whole build with the following Rake tasks:
+
+    $ rake stories
+    $ rake stories:pdf
 
 Installation
 ------------
