@@ -21,6 +21,9 @@ class UserStoryTest < Test::Unit::TestCase
     end
 
     scenario "A call to a helper" do
+      report "I use some helper" do
+        some_helper
+      end
       assert_equal 1, some_helper
     end
   end

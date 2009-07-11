@@ -36,6 +36,23 @@ class Test::Unit::TestCase
   end
 end
 
+module Test::Unit::Assertions
+  def report(text, &block)
+    @scenario.steps << text
+    silent(&block) if block_given?
+  end
+
+  def silent(&block)
+    scenario, @scenario = @scenario, Stories::Scenario.new("#{@scenario.name} (Silent)")
+
+    begin
+      block.call
+    ensure
+      @scenario = scenario
+    end
+  end
+end
+
 module Stories
   class Story
     attr_accessor :name, :scenarios
@@ -126,7 +143,7 @@ module Stories::Webrat
   report_for :click_link do |name|
     "Click #{quote(name)}"
   end
-  
+
   report_for :click_button do |name|
     "Click #{quote(name)}"
   end
@@ -138,7 +155,7 @@ module Stories::Webrat
   report_for :visit do |page|
     "Go to #{quote(page)}"
   end
-  
+
   report_for :check do |name|
     "Check #{quote(name)}"
   end

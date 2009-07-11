@@ -32,21 +32,82 @@ If you are using Rails, you can use stories for your integration tests with Webr
     class UserStoriesTest < ActionController::IntegrationTest
       story "As a user I want to log in so that I can access restricted features" do
         setup do
-          @user = User.spawn
+          @user = User.spawn :name => "Albert", :email => "albert@example.com"
         end
 
         scenario "Using good information" do
           visit "/"
           click_link "Log in"
-          fill_in :session_email, :with => user.email
-          fill_in :session_password, :with => user.password
+          fill_in "Email", :with => user.email
+          fill_in "Password", :with => user.password
           click_button "Sign in"
 
-          assert_not_contain "Log in"
-          assert_not_contain "Sign up"
+          assert_contain "Logout"
+          assert_contain "Welcome Albert"
         end
       end
     end
+
+This will produce the following output:
+
+    - As a user I want to lo in so that I can access restricted features
+        Using good information
+            Go to “/”
+            Click “Log in”
+            Fill in “Email” with “albert@example.com”
+            Fill in “Password” with “secret”
+            Click “Sign in”
+            I should see “Logout”
+            I should see “Welcome Albert”
+
+Custom reports
+--------------
+
+Stories ships with reports for many Webrat helpers, but you can write your own version or add reports
+for other helpers.
+
+For instance, let's say you add this assertion:
+
+    module Test::Unit::Assertions
+      def assert_current_page(path)
+        assert_equal path, current_url.sub(%r{^http://www\.example\.com}, '')
+      end
+    end
+
+When you run it, no output will be generated because Stories doesn't know what to say about this assertion.
+Adding a custom report is easy:
+
+    module Stories::Webrat
+      report_for :assert_current_page do |page|
+        "I should be on #{quote(page)}"
+      end
+    end
+
+All this should reside in your `stories_helper.rb`.
+
+Step wrappers
+---------------
+
+There are two other methods that are useful for reporting steps or assertions: `silent` and `report`.
+
+The `silent` helper gives you the ability to suspend the steps and assertions' normal output:
+
+    ...
+    silent do
+      assert_contain "Some obscure hash"
+    end
+    ...
+
+In a similar fashion, `report` lets you replace the normal output with your own message:
+
+    ...
+    report "I verify that the hash generated correctly" do
+      assert_contain "The same obscure hash"
+    end
+    ...
+
+Running stories
+---------------
 
 You can run it normally, it's Test::Unit after all. If you want to run a particular test, say "yet more tests", try this:
 
