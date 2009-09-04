@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "stories"
-  s.version     = "0.1.2"
+  s.version     = "0.1.3"
   s.summary     = "Write Stories and User Acceptance Tests using the minimalist testing framework Contest."
   s.description = "Write Stories and User Acceptance Tests using Contest, the tiny add on to Test::Unit that provides nested contexts and declarative tests."
   s.authors     = ["Damian Janowski", "Michel Martens"]
